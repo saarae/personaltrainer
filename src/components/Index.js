@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,14 +14,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Traininglist from './Traininglist';
 import Customerlist from './Customerlist';
 
-export default function DrawerTest() {
+export default function Index() {
 
   const drawerWidth = 240;
 
@@ -93,6 +91,7 @@ export default function DrawerTest() {
     };
 
     return (
+      <BrowserRouter>
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
@@ -132,12 +131,12 @@ export default function DrawerTest() {
           </div>
           <Divider />
           <List>
-            {['Customers', 'Trainings', 'Calendar'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+              <ListItem button component={Link} to='/customers'>
+                <ListItemText primary='Customers' />
               </ListItem>
-            ))}
+              <ListItem button component={Link} to='/trainings'>
+                <ListItemText primary='Trainings' />
+              </ListItem>
           </List>
           <Divider />
         </Drawer>
@@ -147,8 +146,13 @@ export default function DrawerTest() {
           })}
         >
           <div className={classes.drawerHeader} />
-          <Customerlist />
+          <Switch>
+           <Route exact path="/customers" component={Customerlist}/>
+           <Route path="/trainings" component={Traininglist}/>
+         </Switch>
         </main>
+
       </div>
+      </BrowserRouter>
     );
 }

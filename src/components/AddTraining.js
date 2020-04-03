@@ -28,7 +28,6 @@ export default function AddTraining(props) {
     }
 
     const addTraining = () => {
-        console.log(training);
         props.saveTraining(training);
         handleClose();
     }

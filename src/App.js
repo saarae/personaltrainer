@@ -1,14 +1,9 @@
 import React from 'react';
-import './App.css';
-import Customerlist from './components/Customerlist';
-import Traininglist from './components/Traininglist';
-import DrawerTest from './components/DrawerTest';
+import Index from './components/Index';
 
 function App() {
   return (
-    <div className="App">
-      <DrawerTest />
-    </div>
+    <Index />
   );
 }
 

@@ -15,7 +15,6 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import Button from '@material-ui/core/Button';
 import AddTraining from './AddTraining';
 
 export default function Customerlist() {
@@ -52,7 +51,7 @@ export default function Customerlist() {
 
     const deleteCustomer = (oldData) => {
       fetch(oldData.links[0].href, {method: 'DELETE'})
-      // .then(res => fetchData())
+      .then(res => fetchData())
       .catch(err => console.error(err))
     }
    
@@ -81,7 +80,6 @@ export default function Customerlist() {
     }
 
     const saveTraining = (training) => {
-      console.log(training)
       fetch('https://customerrest.herokuapp.com/api/trainings', {
         method: 'POST',
         headers: {
